@@ -126,8 +126,8 @@ def modificarUsuario(request):
     if request.user.is_superuser == False:
         return redirect('panel')
     if request.method == 'POST':
-        username = request.POST['username']
-        usuario  = Usuario.objects.get(username = username)
+        id = request.POST['idUsuario']
+        usuario  = Usuario.objects.get(id = id)
         clave1   = request.POST['pass1']
         clave2   = request.POST['pass2']
         tipo     = request.POST['tipo_usuario']
@@ -138,6 +138,7 @@ def modificarUsuario(request):
             else:
                 usuario.is_superuser = True
                 usuario.is_staff     = True
+            usuario.username  = request.POST['username']
             usuario.nombres   = request.POST['nombre']
             usuario.apellidos = request.POST['apellido']
             usuario.username  = request.POST['username']
