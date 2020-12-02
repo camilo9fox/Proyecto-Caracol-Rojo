@@ -8,8 +8,8 @@
     <div class="row">
         {% if user.is_superuser == True %}
         <div class="col s4">
-            <p>Nombre: <label>{{user.nombres}}</label></p>
-            <p>Apellido: <label>{{user.apellidos}}</label></p>
+            <p>Nombre: <label>{{user.nombre}}</label></p>
+            <p>Apellido: <label>{{user.apellido}}</label></p>
             <p>Nombre de usuario: <label>{{user.username}}</label></p>
             <p>Email: <label>{{user.email}}</label></p>
             <p>Estado: <label>{{user.estado}}</label></p>
@@ -46,8 +46,8 @@
         </div>
         {% else %}
         <div class="col s4">
-            <p>Nombre: <label>{{user.nombres}}</label></p>
-            <p>Apellido: <label>{{user.apellidos}}</label></p>
+            <p>Nombre: <label>{{user.nombre}}</label></p>
+            <p>Apellido: <label>{{user.apellido}}</label></p>
             <p>Nombre de usuario: <label>{{user.username}}</label></p>
             <p>Estado: <label>{{user.estado}}</label></p>
             <p>credito: <label>{{user.credito}}</label></p>

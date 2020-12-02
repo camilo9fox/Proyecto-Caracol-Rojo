@@ -38,7 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'usuarios',
+    'rest_framework',
+    'pwa',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +152,73 @@ EMAIL_PORT    = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'djangopruebajuegos@gmail.com'
 EMAIL_HOST_PASSWORD = 'lololo23.'
+
+
+#Paginacion api rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = "/"
+
+
+SOCIALACCOUNT_PROVIDERS = {
+
+    'facebook':
+         {'METHOD': 'oauth2',
+          'SCOPE': ['email'],
+          'FIELDS': [
+              'email',
+              'name',
+              'first_name',
+              'last_name',
+              'verified',]
+        },
+    'google': {
+        'SCOPE': [
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+
+
+#PWA
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
+
+PWA_APP_NAME = 'Caracol Rojo'
+PWA_APP_DESCRIPTION = "Caracol Rojo PWA"
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = 'usuarios/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = 'usuarios/inicio'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': 'static/imagenes/logo.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': 'static/imagenes/logo.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': 'static/imagenes/logo.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
