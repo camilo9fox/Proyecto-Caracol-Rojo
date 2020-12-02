@@ -1,5 +1,8 @@
 {% extends 'usuarios/base.html' %}
 
+{% load socialaccount %}
+{% providers_media_js %}
+
 {% block title %} Login {% endblock %}
 
 {% block css %}
@@ -38,7 +41,7 @@
         display: flex;
         flex-direction: column;
         width: 500px;
-        height: 430px;
+        height: 480px;
     }
     #contenedor-login form p{
         margin: 0;
@@ -66,6 +69,8 @@
                 </div>
             </div>
             <input style="width: 200px; margin-top: 50px;" class="btn wave-effect" type="submit" name="boton" id="idBoton" value="Ingresar">
+            <a class="center" href="{% provider_login_url 'google' %}">Inicia sesion con Google</a>
+            <a class="center" href="{% provider_login_url 'facebook' method='oauth2' %}">Inicia sesion con Facebook</a>
             <p class="center">Todavia no tienes cuenta? Registrate <a href="registro">Aquì</a></p>
             <p class="center">Olvidaste tu contraseña? Recuperala <a href="recuperar_contraseña">Aquì</a></p>
         </form>

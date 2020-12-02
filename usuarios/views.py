@@ -22,16 +22,16 @@ def registro(request):
                         myForm.Meta.model.objects.create_superuser(
                             myForm.cleaned_data['username'],
                             myForm.cleaned_data['email'],
-                            myForm.cleaned_data['nombres'],
-                            myForm.cleaned_data['apellidos'],
+                            myForm.cleaned_data['nombre'],
+                            myForm.cleaned_data['apellido'],
                             myForm.cleaned_data['password1'],
                         )
                     else:
                         myForm.Meta.model.objects.create_user(
                             myForm.cleaned_data['username'],
                             myForm.cleaned_data['email'],
-                            myForm.cleaned_data['nombres'],
-                            myForm.cleaned_data['apellidos'],
+                            myForm.cleaned_data['nombre'],
+                            myForm.cleaned_data['apellido'],
                             myForm.cleaned_data['password1'],
                         )
                     username = myForm.cleaned_data['username']
@@ -88,8 +88,8 @@ def agregarUsuario(request):
             else:
                 usuario.is_superuser = True
                 usuario.is_staff     = True
-            usuario.nombres   = request.POST['nombre']
-            usuario.apellidos = request.POST['apellido']
+            usuario.nombre    = request.POST['nombre']
+            usuario.apellido  = request.POST['apellido']
             usuario.username  = request.POST['username']
             usuario.email     = request.POST['email']
             usuario.estado    = request.POST['estado']
@@ -139,8 +139,8 @@ def modificarUsuario(request):
                 usuario.is_superuser = True
                 usuario.is_staff     = True
             usuario.username  = request.POST['username']
-            usuario.nombres   = request.POST['nombre']
-            usuario.apellidos = request.POST['apellido']
+            usuario.nombre    = request.POST['nombre']
+            usuario.apellido  = request.POST['apellido']
             usuario.username  = request.POST['username']
             usuario.email     = request.POST['email']
             usuario.estado    = request.POST['estado']
